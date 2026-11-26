@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Advanced Task Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <h1>TaskFlow</h1>
+                <p>Manage your work. Achieve your goals.</p>
+            </div>
+
+            <button id="themeToggle" class="theme-btn">
+                🌙 Dark Mode
+            </button>
+        </header>
+
+        <!-- Dashboard -->
+        <section class="dashboard">
+
+            <div class="stat-card">
+                <div class="stat-icon">📋</div>
+                <h3>Total Tasks</h3>
+                <p id="totalTasks">0</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <h3>Completed Tasks</h3>
+                <p id="completedTasks">0</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">⏳</div>
+                <h3>Pending Tasks</h3>
+                <p id="pendingTasks">0</p>
+            </div>
+
+            <div class="stat-card progress-card">
+                <div class="stat-icon">📈</div>
+                <h3>Completion Progress</h3>
+                <p id="progress">0%</p>
+
+                <div class="progress-container">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Add Task Section -->
+        <section class="form-section">
+
+            <h2 id="formTitle">Add New Task</h2>
+
+            <form id="taskForm">
+
+                <div class="form-group">
+                    <label for="taskInput">Task Name</label>
+                    <input
+                        type="text"
+                        id="taskInput"
+                        placeholder="Enter your task..."
+                        maxlength="100"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="priority">Priority</label>
+                    <select id="priority">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="dueDate">Due Date</label>
+                    <input type="date" id="dueDate">
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" class="add-btn" id="submitBtn">
+                        + Add Task
+                    </button>
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        id="cancelEditBtn"
+                        hidden
+                    >
+                        Cancel
+                    </button>
+                </div>
+
+            </form>
+        </section>
+
+        <!-- Task Management Section -->
+        <section class="task-section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>My Tasks</h2>
+                    <p id="taskCount">0 tasks</p>
+                </div>
+            </div>
+
+            <!-- Search and Sorting -->
+            <div class="toolbar">
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="🔍 Search tasks..."
+                >
+
+                <select id="sortSelect">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="priority">Highest Priority</option>
+                    <option value="dueDate">Due Date</option>
+                </select>
+
+            </div>
+
+            <!-- Filters -->
+            <div class="filter-buttons">
+
+                <button class="filter-btn active" data-filter="all">
+                    All
+                </button>
+
+                <button class="filter-btn" data-filter="pending">
+                    Pending
+                </button>
+
+                <button class="filter-btn" data-filter="completed">
+                    Completed
+                </button>
+
+            </div>
+
+            <!-- Task List -->
+            <ul id="taskList" class="task-list"></ul>
+
+            <p id="emptyMessage" class="empty-message">
+                No tasks found. Add your first task!
+            </p>
+
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>TaskFlow | Advanced Task Tracker</p>
+            <p>Built with HTML, CSS and JavaScript</p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

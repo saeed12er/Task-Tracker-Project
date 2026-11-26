@@ -1,0 +1,54 @@
+
+name: TaskFlow CI Workflow
+
+# WHEN SHOULD THE WORKFLOW RUN?
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+# JOBS TO EXECUTE
+jobs:
+
+  # FIRST JOB
+  test:
+
+    name: Test TaskFlow Application
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # STEP 1: DOWNLOAD PROJECT CODE
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # STEP 2: INSTALL NODE.JS
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # STEP 3: CHECK JAVASCRIPT SYNTAX
+      - name: Check JavaScript Syntax
+        run: node --check script.js
+
+      # STEP 4: CHECK HTML FILE
+      - name: Check HTML File
+        run: test -f index.html
+
+      # STEP 5: CHECK CSS FILE
+      - name: Check CSS File
+        run: test -f style.css
+
+      # STEP 6: CHECK README FILE
+      - name: Check README File
+        run: test -f README.md
+
+      # STEP 7: SUCCESS MESSAGE
+      - name: Workflow Success
+        run: echo "TaskFlow CI Workflow Completed Successfully!"
